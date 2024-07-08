@@ -29,6 +29,7 @@ function App() {
       <Route path='/' element={<Login/>}></Route>                                 {/* en este caso la pagina Login actuara como la raiz de nuestra pagina */}  
       <Route path="/Home" element={<Home/>}></Route>
       <Route path='/detalle' element={<DetalleDeVenta/>}></Route>                 {/* una vez loguado el usuario si los datos ingresados son correctos navegara a la pagina Detalle de venta */}
+      <Route path='/detalle/factura/:id' element={<CardDetalle/>}></Route>
       <Route path='/detalle/agregar' element={<AgregarDetalleVenta/>}></Route>
       <Route path='/detalle/editar/:id' element={<EditarDetalleVenta/>}></Route>                 
       <Route path='/productos' element={<Productos/>}></Route>                    {/* desde aqui con las ruutas restantes podra navegar por todas opciones del grupo de botones que se muestra en la parte superior de la interfaz */}
@@ -44,7 +45,6 @@ function App() {
       <Route path='/ventas' element={<Ventas/>}></Route>
       <Route path='/ventas/agregar' element={<AgregarVentas/>}></Route>                        {/* rutas con las que podra navegar con los botones editar y agregar de la tabla */}          
       <Route path='/ventas/editar/:id' element={<EditarVentas/>}></Route>
-      <Route path='/detalle/card' element={<CardDetalle/>}></Route>
       <Route path={'*'} element={<Error/>}></Route>
     </Routes>
     </BrowserRouter>
