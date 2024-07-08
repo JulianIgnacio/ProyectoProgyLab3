@@ -89,7 +89,7 @@ const DetalleDeVenta = () => {
               <tr key={datos.idDetalle}>
                 <td>{datos.idDetalle}</td>
                 <td>{datos.idVenta}</td>
-                <td>{datos.idProducto}</td>
+                <td>{datos.nombreProd}</td>
                 <td>{datos.cantidad}</td>
                 <td>{datos.precioUni}</td>
                 <td>

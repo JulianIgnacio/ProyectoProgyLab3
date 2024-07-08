@@ -87,8 +87,8 @@ const Ventas = () => {
           <tbody>
             {datos.map((datos) => <tr key={datos.idVenta}>
                 <td>{datos.idVenta}</td>
-                <td>{datos.idEmpleado}</td>
-                <td>{datos.idCliente}</td>
+                <td>{datos.nombreEmpleado}</td>
+                <td>{datos.apynomCliente}</td>
                 <td>{datos.fechaVenta}</td>
                 <td>{datos.totalVenta}</td>
                 <td>{datos.metodoPago}</td>

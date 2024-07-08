@@ -2,7 +2,17 @@ const {conection} = require("../config/DB")
 
 
 const listarDetalleVentas = (req,res) => {
-    const query = `select * from DetalleVenta where disponible = 1`
+    const query = `
+    select 
+    DetalleVenta.idDetalle,
+    Ventas.idVenta,
+    Productos.nombreProd,
+    DetalleVenta.cantidad,
+    DetalleVenta.precioUni
+    from DetalleVenta 
+    join Ventas on DetalleVenta.idVenta = Ventas.idVenta
+    join Productos on DetalleVenta.idProducto = Productos.idProducto
+    where disponibleDV=1`
     conection.query(query,(err,results)=>{
         if (err) throw err;
         res.json(results)
