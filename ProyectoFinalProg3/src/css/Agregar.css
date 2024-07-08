@@ -1,0 +1,15 @@
+.caja{
+    text-align: center;
+    padding-top: 100px;
+    font-size: 22px;
+}
+
+.formularioA input{
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.formularioA h1{
+    margin-bottom: 26px;
+}
+
