@@ -2,7 +2,7 @@ const {conection} = require("../config/DB")
 
 
 const listarClientes = (req,res) => {
-    const query = `select* from Clientes where disponible = 1`
+    const query = `select* from Clientes where disponibleC = 1`
     conection.query(query,(err,results)=>{
         if (err) throw err;
         res.json(results)
