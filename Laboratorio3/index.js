@@ -1,6 +1,7 @@
 const express = require("express")
 const {conection} = require("./config/DB")
 const cors= require("cors")
+const bodyParser = require('body-parser');
 
 const Usuarios = require("./routes/UsuariosRoute")
 const Empleados = require("./routes/EmpleadosRoute")
@@ -17,6 +18,9 @@ const port = 8000;
 
 app.use(express.json())
 app.use(cors())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/",Usuarios)
 app.use("/",Empleados)
