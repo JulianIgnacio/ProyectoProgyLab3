@@ -1,5 +1,4 @@
 const {conection} = require("../config/DB")
-const {axios} = require("axios")
 
 
 const allUsers = (req,res) =>{

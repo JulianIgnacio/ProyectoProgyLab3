@@ -4,35 +4,43 @@ import { FaUser } from "react-icons/fa";
 import { PiLockKeyFill } from "react-icons/pi";                        // linea 4 y 5 traemos los iconos desde react-icons
 import "../css/Login.css"                                          // importamos la carpeta de estilos para el login
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { URL_LOGIN } from '../constants/constantes';
   
 
 const MainL = () => {
 
-  const [user, setUser] = useState("")                                 // creamos dos estados con useState para el usuario y contrasena 
-  const [password, setPassword] = useState("")
+  const [usuario, setUsuario] = useState()                                 // creamos dos estados con useState para el usuario y contrasena 
 
   const navigate = useNavigate() 
 
+  const estadoInicial = {
+    nombreUsuario : "",
+    contraseña: ""
+  }
 
-
-  const handleSubmit = (e) => {                                       // creamos la funcion handleSubmit para tomar los valores de los inputs del logueo
+  const handleSubmit = async(e) => {                                       // creamos la funcion handleSubmit para tomar los valores de los inputs del logueo
 
     e.preventDefault()                                                // utilizamos e.preventeDefault () para prevenir el comportamiento por defecto
 
-
-    if (user === "empleado" && password === "12345") {                    // condicion para el logueo
-      
-      navigate("/Home")
-    } else {
-      alert("usuario o contraseña incorrectos")
+    let response = await axios.post(URL_LOGIN,{
+      nombreUsuario: usuario.nombreUsuario,
+      contraseña: usuario.contraseña
+    })
+    if(response){
+      if (nombreUsuario === usuario.nombreUsuario && contraseña === usuario.contraseña) {                    // condicion para el logueo
+        navigate("/Home")
+      } else {
+        alert("usuario o contraseña incorrectos")
+      }
     }
 
     e.target.reset()                                                  // para resetear los campos usuario y contrasena 
-    setUser("") 
-    setPassword("")
-
   }
 
+  const handleChange = (e)=> {
+    setUsuario({...usuario,[e.target.name]:e.target.value})
+  }
 
   return (
     <div className='formulario'>                                      
@@ -42,12 +50,12 @@ const MainL = () => {
         <h2>Inciar Sesión</h2>
       
         <div className='input-box'>
-          <input type="text" placeholder='Usuario' onChange={(e) => setUser(e.target.value)} />                        {/* de este modo utilazamos el evento onChange para capturar los valores ingresados */}
+          <input type="text" placeholder='Usuario' onChange={handleChange} name='nombreUsuario' />                        {/* de este modo utilazamos el evento onChange para capturar los valores ingresados */}
           <FaUser className='icon' />
         </div>
 
         <div className='input-box'>
-          <input type="password" placeholder='Contraseña' onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder='Contraseña' onChange={handleChange} name='contraseña' />
           <PiLockKeyFill className='icon'/>
         </div>
 
