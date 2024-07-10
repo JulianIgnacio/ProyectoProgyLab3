@@ -27,9 +27,10 @@ const MainL = () => {
       contraseña: usuario.contraseña,
     });
     if (response) {
+      alert(response.data.message)
       navigate("/Home");
     } else {
-      alert("usuario o contraseña incorrectos");
+      alert(error.response.data.message);
     }
 
     e.target.reset(); // para resetear los campos usuario y contrasena
