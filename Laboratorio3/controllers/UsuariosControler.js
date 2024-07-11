@@ -8,7 +8,34 @@ const allUsers = (req,res) =>{
         res.json(results)
     })
 }
+const agregarUsuario = (req,res) => {
+    const {nombreUsuario,contraseña} = req.body
 
+    const query = `insert into Usuarios (nombreUsuario,contraseña) values (${nombreUsuario},${contraseña})`
+
+    conection.query(query,(err,results)=>{
+        if (err) throw err
+        res.send(results)
+    })
+}
+const editarUsuario = (req,res) => {
+    const id = req.params
+    const {nombreUsuario,contraseña} = req.body
+
+    const query = `update Usuarios set nombreUsuario=${nombreUsuario} ,contraseña=${contraseña} where idUsuario=${id}`
+    conection.query(query,(err,results)=> {
+        if(err) throw err,
+        res.send(results)
+    })
+}
+const eliminarUsuario = (req,res) => {
+    const id = req.params
+    const query = `update Usuarios set disponibleU =0 where idUsuario=${id}`
+    conection.query(query,(err,results)=> {
+        if(err) throw err,
+        res.send(results)
+    })
+}
 const login = async (req,res) => {
 
     const nombreUsuario = req.body.nombreUsuario;
@@ -26,7 +53,6 @@ const login = async (req,res) => {
 
         const usuario = results[0];
 
-        // Comparar la contraseña en texto plano (no recomendado)
         if (contraseña === usuario.contraseña) {
             res.status(200).json({ message: 'Inicio de sesión exitoso' });
         } else {
@@ -35,4 +61,4 @@ const login = async (req,res) => {
     });
 }
 
-module.exports = {allUsers,login}
+module.exports = {allUsers,agregarUsuario,editarUsuario,eliminarUsuario,login}
