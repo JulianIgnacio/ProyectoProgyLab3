@@ -19,6 +19,7 @@ import EditarCliente from "./components/EditarCliente"
 import EditarProducto from "./components/EditarProducto"
 import EditarEmpleado from "./components/EditarEmpleado"
 import EditarDetalleVenta from "./components/EditarDetalleVenta"
+import AgregarUsuario from "./components/AgregarUsuario"
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
       <Route path='/empleado/agregar' element={<AgregarEmpleado/>}></Route>
       <Route path='/empleado/editar/:id' element={<EditarEmpleado/>}></Route>
       <Route path='/usuario' element={<Usuario/>}></Route>
+      <Route path='/usuario/agregar' element={<AgregarUsuario/>}></Route>
       <Route path='/ventas' element={<Ventas/>}></Route>
       <Route path='/ventas/agregar' element={<AgregarVentas/>}></Route>                        {/* rutas con las que podra navegar con los botones editar y agregar de la tabla */}          
       <Route path='/ventas/editar/:id' element={<EditarVentas/>}></Route>

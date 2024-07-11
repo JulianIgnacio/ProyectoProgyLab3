@@ -42,7 +42,7 @@ const editarClientes = (req,res) => {
 
 const eliminarClientes = (req,res) => {
     const id= req.params.id
-    const query= `update Clientes set disponible=0 where idCliente='${id}'`
+    const query= `update Clientes set disponibleC=0 where idCliente='${id}'`
     conection.query(query,(err,results)=> {
         if (err) throw err
         res.send(results)

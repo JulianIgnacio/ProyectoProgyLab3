@@ -60,7 +60,7 @@ const Usuario = () => {
       <h3 className="ml-4">Lista de Usuarios</h3>
       <br />
       <div className="p-5">
-        <Link to="/agregar" className="btn btn-success float-right">
+        <Link to="/usuario/agregar" className="btn btn-success float-right">
           Agregar
         </Link>
       </div>

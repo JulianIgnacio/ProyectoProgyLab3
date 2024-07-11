@@ -8,7 +8,7 @@ import "../css/Tabla.css";
 import Carrusel from "../components/Carousel";
 import { useState,useEffect } from "react";
 import axios from "axios";
-import { URL_VENTAS } from "../constants/constantes";
+import { URL_VENTAS,URL_VENTAS_ELIMINAR } from "../constants/constantes";
 
 const Ventas = () => {
   const [datos, setDatos] = useState([]);
@@ -20,7 +20,7 @@ const Ventas = () => {
   };
 
   const handleEliminarVenta = async (idVenta) =>{
-    let response = await axios.delete(`http://localhost:8000/Ventas/BorrarVentas/${idVenta}`)
+    let response = await axios.delete(`${URL_VENTAS_ELIMINAR}/${idVenta}`)
     if(response) {
         alert("Venta Eliminada");
         getDatos()

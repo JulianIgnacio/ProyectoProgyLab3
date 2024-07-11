@@ -1,10 +1,11 @@
-import {Router,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Card} from 'react-bootstrap'
 import Logo from '../assets/LogoFerreteria.png'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../css/Cards.css'
+import { URL_DETALLEVENTAS_FILTRAR } from '../constants/constantes'
 
 const CardDetalle = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const CardDetalle = () => {
 
   const getDetalle = async () => {
     try {
-      let result = await axios.get(`http://localhost:8000/DetalleVentas/${id}`);
+      let result = await axios.get(`${URL_DETALLEVENTAS_FILTRAR}/${id}`);
       setDetalle(result.data[0]);
     } catch (error) {
         console.error(error)

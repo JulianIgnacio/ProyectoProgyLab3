@@ -43,7 +43,7 @@ const editarProducto = (req,res) => {
 
 const eliminarProducto = (req,res) => {
     const id= req.params.id
-    const query= `update Productos set disponible=0 where idProducto='${id}'`
+    const query= `update Productos set disponibleP=0 where idProducto='${id}'`
     conection.query(query,(err,results)=> {
         if (err) throw err
         res.send(results)

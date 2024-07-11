@@ -11,7 +11,7 @@ const allUsers = (req,res) =>{
 const agregarUsuario = (req,res) => {
     const {nombreUsuario,contraseña} = req.body
 
-    const query = `insert into Usuarios (nombreUsuario,contraseña) values (${nombreUsuario},${contraseña})`
+    const query = `insert into Usuarios (nombreUsuario,contraseña) values ('${nombreUsuario}','${contraseña}')`
 
     conection.query(query,(err,results)=>{
         if (err) throw err
@@ -22,7 +22,7 @@ const editarUsuario = (req,res) => {
     const id = req.params
     const {nombreUsuario,contraseña} = req.body
 
-    const query = `update Usuarios set nombreUsuario=${nombreUsuario} ,contraseña=${contraseña} where idUsuario=${id}`
+    const query = `update Usuarios set nombreUsuario='${nombreUsuario}' ,contraseña='${contraseña}' where idUsuario='${id}'`
     conection.query(query,(err,results)=> {
         if(err) throw err,
         res.send(results)
