@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Carrusel from "../components/Carousel";
 import axios from "axios";
 import {
+  URL_USUARIOS_ELIMINAR,
   URL_USUARIOS
 } from "../constants/constantes";
 
@@ -20,6 +21,13 @@ const Usuario = () => {
     console.log(response.data);
     setDatos(response.data)
   };
+  const handleEliminarUsuario = async (idUsuario) => {
+    let response = await axios.delete(`${URL_USUARIOS_ELIMINAR}/${idUsuario}`)
+    if(response){
+      alert("Usuario Eliminado");
+      getDatos();
+    }
+  } 
 
   useEffect(() => {
     getDatos();
@@ -85,7 +93,7 @@ const Usuario = () => {
                   <Link to="/editar" className="btn btn-warning mr-3">
                     <MdEdit />
                   </Link>
-                  <button className="btn btn-danger">
+                  <button className="btn btn-danger" onClick={()=> handleEliminarUsuario(datos.idUsuario)}>
                     <FaTrashAlt />
                   </button>
                 </td>{" "}

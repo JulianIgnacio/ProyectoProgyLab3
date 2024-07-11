@@ -19,7 +19,7 @@ const agregarUsuario = (req,res) => {
     })
 }
 const editarUsuario = (req,res) => {
-    const id = req.params
+    const id = req.params.id
     const {nombreUsuario,contraseña} = req.body
 
     const query = `update Usuarios set nombreUsuario='${nombreUsuario}' ,contraseña='${contraseña}' where idUsuario='${id}'`
@@ -29,8 +29,8 @@ const editarUsuario = (req,res) => {
     })
 }
 const eliminarUsuario = (req,res) => {
-    const id = req.params
-    const query = `update Usuarios set disponibleU =0 where idUsuario=${id}`
+    const id = req.params.id
+    const query = `update Usuarios set disponibleU=0 where idUsuario='${id}'`
     conection.query(query,(err,results)=> {
         if(err) throw err,
         res.send(results)
