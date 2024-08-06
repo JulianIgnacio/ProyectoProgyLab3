@@ -57,7 +57,7 @@ const editarVenta = (req,res) => {
 
 const eliminarVenta = (req,res) => {
     const id= req.params.id
-    const query= `update Ventas set disponible=0 where idVenta='${id}'`
+    const query= `update Ventas set disponibleV=0 where idVenta='${id}'`
     conection.query(query,(err,results)=> {
         if (err) throw err
         res.send(results)
