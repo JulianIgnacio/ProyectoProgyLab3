@@ -1,5 +1,5 @@
 const {conection} = require("../config/DB")
-
+const xlsx = require('xlsx');
 
 const listarVentas = (req,res) => {
     const query = `    
@@ -20,6 +20,7 @@ const listarVentas = (req,res) => {
     Ventas.disponibleV = 1`
     conection.query(query,(err,results)=>{
         if (err) throw err;
+        
         res.json(results)
     })
 }
