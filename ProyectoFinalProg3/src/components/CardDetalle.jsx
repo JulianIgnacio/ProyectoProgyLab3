@@ -1,5 +1,5 @@
 import {Router,Link} from 'react-router-dom'
-import {Card} from 'react-bootstrap'
+import {Card , Button} from 'react-bootstrap'
 import Logo from '../assets/LogoFerreteria.png'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -19,10 +19,14 @@ const CardDetalle = () => {
         console.error(error)
     }
   };
+  const imprimirFactura = () => {
+    window.print();
+  }
 
   useEffect(()=> {
     getDetalle()
   },[])
+
   return (
     <div>
         
@@ -58,8 +62,11 @@ const CardDetalle = () => {
             </Card.Text>
             <br></br>
 
-            <div className='text-center'> {/* para centrar el boton*/}
+            <div className='d-flex justify-content-around'> {/* para centrar el boton*/}
+            
            <Link className="btn btn-warning" to="/detalle">Volver</Link>
+
+           <Button variant='primary' onClick={imprimirFactura}>Impimir Factura</Button>
           </div>
           </Card.Body>
 
